@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="w-full h-full bg-gray-200">
       <div className="container mx-auto  px-30 flex justify-between">
-        <div className="p-10 flex flex-col gap-5">
+        <div className="py-10 flex flex-col gap-5">
           <h1 className="text-3xl font-bold">E-Mart</h1>
           <div className="flex space-x-4">
             <input
