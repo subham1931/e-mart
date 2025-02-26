@@ -11,8 +11,12 @@ import chair2 from "../assets/products/chair2.png";
 import chair3 from "../assets/products/chair3.png";
 import chair4 from "../assets/products/chair4.png";
 import Brand from "./Brand";
+import { useCart } from "../context/CartContext";
 
 const ProductDetails = () => {
+  const { addToCart } = useCart();
+
+  
   const products = [
     { id: 1, name: "Realme Watch", price: "1000", image: chair1 },
     { id: 2, name: "Headphone", price: "2000", image: chair2 },
@@ -105,7 +109,7 @@ const ProductDetails = () => {
             </div>
 
             <div className="flex space-x-4 mt-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+              <button  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
                 Add to Cart
               </button>
               <button className="bg-[#FB2E86] text-white px-4 py-2 rounded-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
@@ -140,8 +144,9 @@ const ProductDetails = () => {
               <Product
                 key={product.id}
                 name={product.name}
-                image={product.image}
                 price={product.price}
+                image={product.image}
+                // addToCart={addToCart}
               />
             ))}
           </div>

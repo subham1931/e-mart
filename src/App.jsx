@@ -8,21 +8,24 @@ import Cart from "./screen/Cart";
 import ProductDetails from "./component/ProductDetails";
 import Checkout from "./screen/Checkout";
 // import Login from "./screen/Login";
+import { CartProvider } from "./context/CartContext";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/category" element={<Category />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/checkout" element={<Checkout />} />
-          {/* <Route path="/login" element={<Login />} /> */}
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/category" element={<Category />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/checkout" element={<Checkout />} />
+            {/* <Route path="/login" element={<Login />} /> */}
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </CartProvider>
   );
 };
 
