@@ -1,9 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import watch from "../assets/products/watch.png";
+import { Link } from "react-router-dom";
 
-const Product = ({ image, name, price, addToCart }) => {
+const Product = ({ id,image, name, price, addToCart }) => {
+  // useEffect(() => {
+  //   console.log("Product component mounted");
+    
+  //   console.log({ id, image, name, price });
+  // }, []);
   const handleaddtocart = () => {
     console.log("Button clicked - Adding to cart", { name, price, image });
     addToCart({ name, price, image });
@@ -14,6 +20,11 @@ const Product = ({ image, name, price, addToCart }) => {
     //   console.error("addToCart is not a function");
     // }
   };
+
+  // const handleBuyNow = () => {
+  //   const history = useHistory();
+  //   history.push(`/product/${id}`);
+  // }
   return (
     <div className="bg-[#E7E4F8] w-full max-w-xs mx-auto rounded-lg shadow-md overflow-hidden">
       <div className="p-6 flex justify-center">
@@ -48,15 +59,17 @@ const Product = ({ image, name, price, addToCart }) => {
           >
             Add to Cart
           </button>
-          <button className="bg-[#F701A8] text-white px-4 py-2 rounded-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
-            Wishlist
-          </button>
+          <Link to={`/product/${id}`}>
+          <button  className="bg-[#F701A8] text-white px-4 py-2 rounded-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+            Buy Now
+          </button></Link>
         </div>
       </div>
     </div>
   );
 };
 Product.propTypes = {
+  id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

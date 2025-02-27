@@ -1,11 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import logo from "../assets/images/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const state = useSelector((state) => state.handleCart);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -49,18 +53,22 @@ const Navbar = () => {
           className="hidden md:flex space-x-4"
           style={{ fontFamily: "Josefin Sans" }}
         >
-          <a href="/" className={getActiveClass("/")}>
+          <NavLink to="/" className={getActiveClass("/")}>
             Home
-          </a>
-          <a href="/category" className={getActiveClass("/category")}>
+          </NavLink>
+          <NavLink to="/category" className={getActiveClass("/category")}>
             Category
-          </a>
-          <a href="/cart" className={getActiveClass("/cart")}>
+          </NavLink>
+          <NavLink to="/cart" className={getActiveClass("/cart")}>
             Cart
-          </a>
-          <a href="/login" className={getActiveClass("/login")}>
+          </NavLink>
+          <NavLink to="/login" className={getActiveClass("/login")}>
             Login
-          </a>
+          </NavLink>
+          <NavLink to="/cart" className={getActiveClass("/cart")}>
+            <FontAwesomeIcon icon={faCartShopping} className="mr-1" /> Cart (
+            {state.length})
+          </NavLink>
         </div>
         <div className="md:hidden relative">
           <button
@@ -87,27 +95,38 @@ const Navbar = () => {
               isOpen ? "block" : "hidden"
             }`}
           >
-            <a href="/" className={`block py-2 px-4 ${getActiveClass("/")}`}>
+            <NavLink
+              to="/"
+              className={`block py-2 px-4 ${getActiveClass("/")}`}
+            >
               Home
-            </a>
-            <a
-              href="/category"
+            </NavLink>
+            <NavLink
+              to="/category"
               className={`block py-2 px-4 ${getActiveClass("/category")}`}
             >
               Category
-            </a>
-            <a
-              href="/cart"
+            </NavLink>
+            <NavLink
+              to="/cart"
               className={`block py-2 px-4 ${getActiveClass("/cart")}`}
             >
               Cart
-            </a>
-            <a
-              href="/login"
+            </NavLink>
+            <NavLink
+              to="/login"
               className={`block py-2 px-4 ${getActiveClass("/login")}`}
             >
               Login
-            </a>
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className={`block py-2 px-4 ${getActiveClass("/cart")}`}
+            >
+              <p>Cart</p>
+              <FontAwesomeIcon icon={faCartShopping} className="mr-1" /> (
+              {state.length})
+            </NavLink>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../component/Navbar';
-import Footer from '../component/Footer';
+import Navbar from './component/Navbar';
+import Footer from './component/Footer';
 
 const Layout = ({ children }) => {
     return (
